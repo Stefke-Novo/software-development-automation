@@ -11,8 +11,8 @@ public class Match {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "date_played")
-    private Date datePlayed;
+    @Column(name = "`date`")
+    private Date date;
 
     @ManyToOne(fetch = FetchType.LAZY,targetEntity = Team.class)
     @JoinColumn(name = "home_team", referencedColumnName = "id")
@@ -27,4 +27,5 @@ public class Match {
 
     @Column(name = "points_away_team")
     private int pointsAwayTeam;
+
 }
