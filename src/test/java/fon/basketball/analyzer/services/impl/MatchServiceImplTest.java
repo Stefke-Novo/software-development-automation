@@ -2,7 +2,6 @@ package fon.basketball.analyzer.services.impl;
 
 import fon.basketball.analyzer.models.Match;
 import fon.basketball.analyzer.repository.MatchRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
