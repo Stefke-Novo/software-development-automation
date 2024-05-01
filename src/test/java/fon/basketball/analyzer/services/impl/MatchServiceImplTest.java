@@ -35,4 +35,5 @@ class MatchServiceImplTest {
     public void returnMatchMock(){
         Assert.isInstanceOf(ArrayList.class,matchRepository.findAll());
     }
+
 }
