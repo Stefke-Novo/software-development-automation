@@ -18,7 +18,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
           architecture: x64
-      - name: Build with Maven
-        run: mvn -B package --file pom.xml
+#      - name: Build with Maven
+#        run: mvn -B package --file pom.xml
       - name: Running maven test
         run: mvn test
