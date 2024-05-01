@@ -1,0 +1,23 @@
+name: name-this-is-example-github-action
+run-name: run-name-this_is_run-name_description
+on:
+  push:
+    branches:
+      - TeamService
+jobs:
+  example-job:
+    runs-on:
+      windows-latest
+    steps:
+      - name: The first step
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+          architecture: x64
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: Running maven test
+        run: mvn test
