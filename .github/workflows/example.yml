@@ -1,7 +1,10 @@
-name: name-this-is-example-github-action
-run-name: run-name-this_is_run-name_description
+name: run_tests
+run-name: run_tests_process
 on:
   push:
+    branches:
+      - TeamService
+  pull_request:
     branches:
       - TeamService
 jobs:
