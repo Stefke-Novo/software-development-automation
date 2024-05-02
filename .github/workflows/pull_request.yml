@@ -1,0 +1,22 @@
+name: pull_request_process
+run-name: pull_request_process
+on:
+    pull_request:
+      types: [ opened, reopened ]
+jobs:
+  testing_before_pull_request:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+          architecture: x64
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+      - name: Running maven test
+        run: mvn test
