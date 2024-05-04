@@ -21,8 +21,8 @@ jobs:
         run: mvn test
 
       - name: Save Test Results
-        id: test
         run: mvn surefire-report:report-only
+
       - name: Testing time
         id: test
         uses: Kaven-Universe/github-action-current-date-time@v1
