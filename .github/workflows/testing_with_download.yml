@@ -1,0 +1,43 @@
+name: Testing with report download
+run-name: Testing with downloading report process
+on:
+  push
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+
+      - name: Build with Maven
+        run: mvn -B clean package
+
+      - name: Run Tests
+        run: mvn test
+
+      - name: Save Test Results
+        id: test
+        run: mvn surefire-report:report-only
+        with:
+          format: "YYYY_MM_DD HH_mm_ss"
+
+      - name: Upload Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: tests/${{steps.test.outputs}} test results by ${{github.actor}}
+
+  download-report:
+    runs-on: windows-latest
+    needs: test
+    name: Download report
+    steps:
+      - name: Download report file
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{steps.test.outputs}} test results by ${{github.actor}}
