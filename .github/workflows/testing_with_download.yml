@@ -36,7 +36,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: tests/'${{steps.test.outputs}} test results by ${{github.actor}}'.txt
+          path: tests/'${{steps.test.outputs.date}} ${{steps.test.outputs.time}} test results by ${{github.actor}}'.txt
 
   download-report:
     runs-on: windows-latest
