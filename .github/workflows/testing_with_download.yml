@@ -30,13 +30,14 @@ jobs:
         id: test
         uses: Kaven-Universe/github-action-current-date-time@v1
         with:
-          format: "YYYY_MM_DD HH_mm_ss"
+          format: "YYYY_MM_DD-HH_mm_ss"
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v4
         with:
-          name: test-results
-          path: tests/${{steps.test.outputs.date}}-${{steps.test.outputs.time}}-test-results-by-${{github.actor}}.txt
+          name: ${{steps.test.outputs.time}}-test-results-by-${{github.actor}}.txt
+          path: tests
+
 
   download-report:
     runs-on: windows-latest
