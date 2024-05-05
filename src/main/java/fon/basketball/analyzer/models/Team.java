@@ -21,4 +21,6 @@ public class Team {
     private List<Match> homeMatches;
     @OneToMany(fetch = FetchType.LAZY,targetEntity = Match.class,mappedBy = "awayTeam")
     private List<Math> awayMatches;
+    @OneToMany(fetch = FetchType.LAZY, targetEntity = Player.class, mappedBy = "team")
+    private List<Player> roster;
 }
