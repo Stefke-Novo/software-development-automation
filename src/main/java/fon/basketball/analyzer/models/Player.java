@@ -1,6 +1,8 @@
 package fon.basketball.analyzer.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+
 
 @Entity
 @Table(name = "player")
@@ -15,8 +17,9 @@ public class Player {
     private String surname;
     @Column(name = "number")
     private int number;
-    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Team.class)
+    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Team.class,optional = false)
     @JoinColumn(name = "team_id",referencedColumnName = "id")
+    @JsonBackReference
     private Team team;
 
 
