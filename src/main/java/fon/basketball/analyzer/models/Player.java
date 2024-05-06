@@ -3,6 +3,8 @@ package fon.basketball.analyzer.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 @Table(name = "player")
@@ -21,6 +23,9 @@ public class Player {
     @JoinColumn(name = "team_id",referencedColumnName = "id")
     @JsonBackReference
     private Team team;
+
+    @OneToMany(fetch = FetchType.LAZY,targetEntity = PlayerMatch.class,mappedBy = "player")
+    private List<PlayerMatch> matches;
 
 
     public long getId() {
@@ -61,5 +66,13 @@ public class Player {
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    public List<PlayerMatch> getMatches() {
+        return matches;
+    }
+
+    public void setMatches(List<PlayerMatch> matches) {
+        this.matches = matches;
     }
 }

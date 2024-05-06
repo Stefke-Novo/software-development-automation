@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,6 +32,9 @@ public class Match {
 
     @Column(name = "points_away_team")
     private int pointsAwayTeam;
+
+    @OneToMany(targetEntity = PlayerMatch.class,fetch = FetchType.LAZY,mappedBy = "match")
+    private List<PlayerMatch> playerStatistics;
 
     public long getId() {
         return id;
@@ -80,15 +84,23 @@ public class Match {
         this.pointsAwayTeam = pointsAwayTeam;
     }
 
+    public List<PlayerMatch> getPlayerStatistics() {
+        return playerStatistics;
+    }
+
+    public void setPlayerStatistics(List<PlayerMatch> playerStatistics) {
+        this.playerStatistics = playerStatistics;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Match match)) return false;
-        return id == match.id && pointsHomeTeam == match.pointsHomeTeam && pointsAwayTeam == match.pointsAwayTeam && Objects.equals(date, match.date) && Objects.equals(homeTeam, match.homeTeam) && Objects.equals(awayTeam, match.awayTeam);
+        return id == match.id && pointsHomeTeam == match.pointsHomeTeam && pointsAwayTeam == match.pointsAwayTeam && Objects.equals(date, match.date) && Objects.equals(homeTeam, match.homeTeam) && Objects.equals(awayTeam, match.awayTeam) && Objects.equals(playerStatistics, match.playerStatistics);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, date, homeTeam, pointsHomeTeam, awayTeam, pointsAwayTeam);
+        return Objects.hash(id, date, homeTeam, pointsHomeTeam, awayTeam, pointsAwayTeam, playerStatistics);
     }
 }
