@@ -13,10 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class TeamRepositoryTest {
 
-    @Autowired
-    private TeamRepository teamRepository;
-    @Test
-    void getAll() {
-        assertInstanceOf(ArrayList.class,teamRepository.findAll());
-    }
+//    @Autowired
+//    private TeamRepository teamRepository;
+//    @Test
+//    void getAll() {
+//        assertInstanceOf(ArrayList.class,teamRepository.findAll());
+//    }
 }

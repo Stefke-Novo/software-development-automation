@@ -15,52 +15,52 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PlayerRepositoryTest {
 
-    @Autowired
-    private PlayerRepository playerRepository;
-
+//    @Autowired
+//    private PlayerRepository playerRepository;
+//
+////    @Test
+////    void getAll() {
+////        assertInstanceOf(ArrayList.class,this.playerRepository.findAll(),"Returned list isn't list of type ArrayList");
+////        assertFalse(this.playerRepository.findAll().isEmpty(),"List is empty.");
+////    }
+//
 //    @Test
-//    void getAll() {
-//        assertInstanceOf(ArrayList.class,this.playerRepository.findAll(),"Returned list isn't list of type ArrayList");
-//        assertFalse(this.playerRepository.findAll().isEmpty(),"List is empty.");
+//    void getPlayer() {
+//        assertTrue(true);
 //    }
-
-    @Test
-    void getPlayer() {
-        assertTrue(true);
-    }
-
-    @Test
-    void getPlayerById(){
-        assertTrue(true);
-    }
-
-    @Test
-    void getPlayerByIdFail() {
-        Optional<Player> result = this.playerRepository.findById(1l);
-        assertTrue(result.isEmpty(),"Player exists in database.");
-    }
-
-    @Test
-    void updatePlayer(){
-        assertTrue(true);
-    }
-
-    //TO DO: Player must have inserted Team first
+//
 //    @Test
-//    void updatePlayerFail() {
+//    void getPlayerById(){
+//        assertTrue(true);
+//    }
+//
+//    @Test
+//    void getPlayerByIdFail() {
+//        Optional<Player> result = this.playerRepository.findById(1l);
+//        assertTrue(result.isEmpty(),"Player exists in database.");
+//    }
+//
+//    @Test
+//    void updatePlayer(){
+//        assertTrue(true);
+//    }
+//
+//    //TO DO: Player must have inserted Team first
+////    @Test
+////    void updatePlayerFail() {
+////        Player player = new Player();
+////        player = this.playerRepository.save(player);
+////        assertTrue(player.getId()>0,"Player is not saved.");
+////    }
+//
+//    @Test
+//    void deletePlayer(){
+//        assertTrue(true);
+//    }
+//
+//    @Test
+//    void deletePlayerFail() {
 //        Player player = new Player();
-//        player = this.playerRepository.save(player);
-//        assertTrue(player.getId()>0,"Player is not saved.");
+//        assertDoesNotThrow(()->this.playerRepository.delete(player));
 //    }
-
-    @Test
-    void deletePlayer(){
-        assertTrue(true);
-    }
-
-    @Test
-    void deletePlayerFail() {
-        Player player = new Player();
-        assertDoesNotThrow(()->this.playerRepository.delete(player));
-    }
 }

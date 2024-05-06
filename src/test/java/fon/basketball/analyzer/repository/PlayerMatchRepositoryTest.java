@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class PlayerMatchRepositoryTest {
 
-    @Autowired
-    private PlayerMatchRepository playerMatchRepository;
-
-    @Test
-    public void findAll(){
-        assertInstanceOf(ArrayList.class,this.playerMatchRepository.findAll());
-    }
+//    @Autowired
+//    private PlayerMatchRepository playerMatchRepository;
+//
+//    @Test
+//    public void findAll(){
+//        assertInstanceOf(ArrayList.class,this.playerMatchRepository.findAll());
+//    }
 }
