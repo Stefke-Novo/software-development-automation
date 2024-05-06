@@ -42,4 +42,13 @@ public class PlayerController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @PostMapping(path = "/delete")
+    public ResponseEntity<Object> deletePlayer(@RequestBody Player player){
+        try{
+            player = this.playerService.deletePlayer(player);
+            return ResponseEntity.ok(player);
+        }catch(Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
