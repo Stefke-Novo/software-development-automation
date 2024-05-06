@@ -11,10 +11,13 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "api/match")
 public class MatchController {
+
     private final MatchService matchService;
+
     public MatchController(MatchService matchService){
         this.matchService=matchService;
     }
+
     @GetMapping(path = "all")
     public ResponseEntity<List<Match>> getAll(){
         return ResponseEntity.ok(matchService.getAll());

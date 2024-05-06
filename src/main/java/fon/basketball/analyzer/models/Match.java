@@ -1,9 +1,12 @@
 package fon.basketball.analyzer.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 
 import java.util.Date;
+import java.util.Objects;
+
 @Entity
 @Table(name = "`match`")
 public class Match {
@@ -15,15 +18,15 @@ public class Match {
     @Column(name = "`date`")
     private Date date;
 
-    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Team.class)
-    @JoinColumn(name = "home_team", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "home_team")
     private Team homeTeam;
 
     @Column(name = "points_house_team")
     private int pointsHomeTeam;
 
-    @ManyToOne(fetch = FetchType.LAZY,targetEntity = Team.class)
-    @JoinColumn(name = "away_team", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "away_team")
     private Team awayTeam;
 
     @Column(name = "points_away_team")
@@ -75,5 +78,17 @@ public class Match {
 
     public void setPointsAwayTeam(int pointsAwayTeam) {
         this.pointsAwayTeam = pointsAwayTeam;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Match match)) return false;
+        return id == match.id && pointsHomeTeam == match.pointsHomeTeam && pointsAwayTeam == match.pointsAwayTeam && Objects.equals(date, match.date) && Objects.equals(homeTeam, match.homeTeam) && Objects.equals(awayTeam, match.awayTeam);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, date, homeTeam, pointsHomeTeam, awayTeam, pointsAwayTeam);
     }
 }

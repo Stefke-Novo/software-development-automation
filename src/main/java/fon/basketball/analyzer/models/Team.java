@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "team")
@@ -18,12 +19,6 @@ public class Team {
     private String city;
     @Column(name = "state")
     private String state;
-    @OneToMany(fetch = FetchType.LAZY,targetEntity = Match.class,mappedBy = "homeTeam")
-    @JsonBackReference
-    private List<Match> homeMatches;
-    @OneToMany(fetch = FetchType.LAZY,targetEntity = Match.class,mappedBy = "awayTeam")
-    @JsonBackReference
-    private List<Math> awayMatches;
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Player.class, mappedBy = "team")
     private List<Player> roster;
 
@@ -59,27 +54,23 @@ public class Team {
         this.state = state;
     }
 
-    public List<Match> getHomeMatches() {
-        return homeMatches;
-    }
-
-    public void setHomeMatches(List<Match> homeMatches) {
-        this.homeMatches = homeMatches;
-    }
-
-    public List<Math> getAwayMatches() {
-        return awayMatches;
-    }
-
-    public void setAwayMatches(List<Math> awayMatches) {
-        this.awayMatches = awayMatches;
-    }
-
     public List<Player> getRoster() {
         return roster;
     }
 
     public void setRoster(List<Player> roster) {
         this.roster = roster;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Team team)) return false;
+        return id == team.id && Objects.equals(name, team.name) && Objects.equals(city, team.city) && Objects.equals(state, team.state) && Objects.equals(roster, team.roster);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, city, state, roster);
     }
 }
