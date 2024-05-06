@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/match")
+@RequestMapping(path = "/api/match")
 public class MatchController {
 
     private final MatchService matchService;

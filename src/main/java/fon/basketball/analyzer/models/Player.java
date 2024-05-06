@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Entity
@@ -74,5 +75,17 @@ public class Player {
 
     public void setMatches(List<PlayerMatch> matches) {
         this.matches = matches;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Player player)) return false;
+        return id == player.id && number == player.number && Objects.equals(name, player.name) && Objects.equals(surname, player.surname) && Objects.equals(team, player.team) && Objects.equals(matches, player.matches);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, number, team, matches);
     }
 }

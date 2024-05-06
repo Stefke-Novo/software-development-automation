@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/player")
+@RequestMapping(path = "/api/player")
 public class PlayerController {
     private final PlayerService playerService;
 
@@ -22,7 +22,7 @@ public class PlayerController {
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Object> getPlayer(@PathVariable long id) throws Exception {
+    public ResponseEntity<Object> getPlayerById(@PathVariable long id) throws Exception {
         try {
             return ResponseEntity.ok(this.playerService.getPlayerById(id));
         }catch (Exception e){
