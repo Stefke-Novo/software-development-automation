@@ -22,8 +22,7 @@ public class PlayerController {
     }
 
     @GetMapping(path = "/{id}")
-    @ResponseBody
-    public ResponseEntity<?> getPlayer(@PathVariable long id) throws Exception {
+    public ResponseEntity<Object> getPlayer(@PathVariable long id) throws Exception {
         try {
             return ResponseEntity.ok(this.playerService.getPlayerById(id));
         }catch (Exception e){
@@ -36,7 +35,7 @@ public class PlayerController {
         return ResponseEntity.ok(this.playerService.getPlayer(name,surname,number));
     }
     @PostMapping(path = "/update")
-    public ResponseEntity<?> updatePlayer(@RequestBody Player player) {
+    public ResponseEntity<Object> updatePlayer(@RequestBody Player player) {
         try{
             return ResponseEntity.ok(this.playerService.updatePlayer(player));
         }catch (Exception e){
