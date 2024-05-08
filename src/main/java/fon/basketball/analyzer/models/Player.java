@@ -2,11 +2,19 @@ package fon.basketball.analyzer.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
 
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "player")
 public class Player {
@@ -28,54 +36,6 @@ public class Player {
     @OneToMany(fetch = FetchType.LAZY,targetEntity = PlayerMatch.class,mappedBy = "player")
     private List<PlayerMatch> matches;
 
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public Team getTeam() {
-        return team;
-    }
-
-    public void setTeam(Team team) {
-        this.team = team;
-    }
-
-    public List<PlayerMatch> getMatches() {
-        return matches;
-    }
-
-    public void setMatches(List<PlayerMatch> matches) {
-        this.matches = matches;
-    }
 
     @Override
     public boolean equals(Object o) {

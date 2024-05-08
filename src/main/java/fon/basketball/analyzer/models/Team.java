@@ -1,10 +1,18 @@
 package fon.basketball.analyzer.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "team")
 public class Team {
@@ -20,46 +28,6 @@ public class Team {
     private String state;
     @OneToMany(fetch = FetchType.LAZY, targetEntity = Player.class, mappedBy = "team")
     private List<Player> roster;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public List<Player> getRoster() {
-        return roster;
-    }
-
-    public void setRoster(List<Player> roster) {
-        this.roster = roster;
-    }
 
     @Override
     public boolean equals(Object o) {

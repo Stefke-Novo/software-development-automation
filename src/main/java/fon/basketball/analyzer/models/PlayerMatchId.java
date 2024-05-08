@@ -1,10 +1,18 @@
 package fon.basketball.analyzer.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 @Embeddable
 public class PlayerMatchId implements Serializable {
 
@@ -13,28 +21,6 @@ public class PlayerMatchId implements Serializable {
 
     @Column(name = "match_id")
     private long matchId;
-
-
-    public PlayerMatchId(long playerId, long matchId) {
-        this.playerId = playerId;
-        this.matchId = matchId;
-    }
-
-    public long getPlayerId() {
-        return playerId;
-    }
-
-    public void setPlayerId(long playerId) {
-        this.playerId = playerId;
-    }
-
-    public long getMatchId() {
-        return matchId;
-    }
-
-    public void setMatchId(long matchId) {
-        this.matchId = matchId;
-    }
 
     @Override
     public boolean equals(Object o) {
